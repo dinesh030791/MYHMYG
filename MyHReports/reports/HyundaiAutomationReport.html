@@ -1,0 +1,1315 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--
+			ExtentReports Library 2.41.1 | http://relevantcodes.com/extentreports-for-selenium/ | https://github.com/anshooarora/
+			Copyright (c) 2015, Anshoo Arora (Relevant Codes) | Copyrights licensed under the New BSD License | http://opensource.org/licenses/BSD-3-Clause
+			Documentation: http://extentreports.relevantcodes.com 
+		-->
+
+		<meta charset='UTF-8' /> 
+		<meta name='description' content='ExtentReports (by Anshoo Arora) is a reporting library for automation testing for .NET and Java. It creates detailed and beautiful HTML reports for modern browsers. ExtentReports shows test and step summary along with dashboards, system and environment details for quick analysis of your tests.' />
+		<meta name='robots' content='noodp, noydir' />
+		<meta name='viewport' content='width=device-width, initial-scale=1' />
+		<meta name='extentx' id='extentx' content='' />
+		
+		<title>
+				Automation Project
+		</title>
+		
+		
+		<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
+		<link href='https://cdn.rawgit.com/anshooarora/extentreports/6032d73243ba4fe4fb8769eb9c315d4fdf16fe68/cdn/extent.css' type='text/css' rel='stylesheet' />
+		
+		<style>
+				
+      
+        
+      
+    
+		</style>
+	</head>
+	
+	
+	<body class='extent default dark hide-overflow'>
+		<!-- nav -->
+		<nav>
+			<div class='logo-container blue darken-2'>
+				<a class='logo-content' href='http://extentreports.relevantcodes.com'>
+					<span>ExtentReports</span>
+				</a>
+				<a href='#' data-activates='slide-out' class='button-collapse hide-on-large-only'><i class='mdi-navigation-apps'></i></a>
+			</div>
+			<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
+				<li class='analysis waves-effect active'><a href='#!' class='test-view' onclick="_updateCurrentStage(0)"><i class='mdi-action-dashboard'></i>Test Details</a></li>
+					<li class='analysis waves-effect'><a href='#!' class='categories-view' onclick="_updateCurrentStage(1)"><i class='mdi-maps-local-offer'></i>Categories</a></li>
+				<li class='analysis waves-effect'>
+					<a href='#!' onclick="_updateCurrentStage(-1)" class='dashboard-view'><i class='mdi-action-track-changes'></i></i>Analysis</a>
+				</li>
+			</ul>
+			<span class='report-name'>MyHyundai Automation Report</span> <span class='report-headline'></span>
+			<ul class='right hide-on-med-and-down nav-right'>
+				<li class='theme-selector' alt='Click to toggle dark theme. To enable by default, use js configuration $("body").addClass("dark");' title='Click to toggle dark theme. To enable by default, use js configuration $("body").addClass("dark");'>
+					<i class='mdi-hardware-desktop-windows'></i>
+				</li>
+				<li>
+					<span class='suite-started-time'>04-12-2019 10:22:20</span>
+				</li>
+				<li>
+					<span>v2.41.1</span>
+				</li>
+			</ul>
+		</nav>
+		<!-- /nav -->
+		
+		<!-- container -->
+		<div class='container'>
+			
+			<!-- dashboard -->
+			<div id='dashboard-view' class='row'>
+				<div class='time-totals'>
+					<div class='col l2 m4 s6'>
+						<div class='card suite-total-tests'> 
+							<span class='panel-name'>Total Tests</span> 
+							<span class='total-tests'> <span class='panel-lead'></span> </span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s6'>
+						<div class='card suite-total-steps'> 
+							<span class='panel-name'>Total Steps</span> 
+							<span class='total-steps'> <span class='panel-lead'></span> </span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s12'>
+						<div class='card suite-total-time-current'> 
+							<span class='panel-name'>Total Time Taken (Current Run)</span> 
+							<span class='suite-total-time-current-value panel-lead'>0h 16m 39s+111ms</span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s12'>
+						<div class='card suite-total-time-overall'> 
+							<span class='panel-name'>Total Time Taken (Overall)</span> 
+							<span class='suite-total-time-overall-value panel-lead'>0h 16m 39s+111ms</span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s6 suite-start-time'>
+						<div class='card accent green-accent'> 
+							<span class='panel-name'>Start</span> 
+							<span class='panel-lead suite-started-time'>04-12-2019 10:05:41</span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s6 suite-end-time'>
+						<div class='card accent pink-accent'> 
+							<span class='panel-name'>End</span> 
+							<span class='panel-lead suite-ended-time'>04-12-2019 10:22:20</span> 
+						</div> 
+					</div>
+				</div>
+				<div class='charts'>
+					<div class='col s12 m6 l4 fh'> 
+						<div class='card-panel'> 
+							<div>
+								<span class='panel-name'>Tests View</span>
+							</div> 
+							<div class='panel-setting modal-trigger test-count-setting right'>
+								<a href='#test-count-setting'><i class='mdi-navigation-more-vert text-md'></i></a>
+							</div> 
+							<div class='chart-box'>
+								<canvas class='text-centered' id='test-analysis'></canvas>
+							</div> 
+							<div>
+								<span class='weight-light'><span class='t-pass-count weight-normal'></span> test(s) passed</span>
+							</div> 
+							<div>
+								<span class='weight-light'><span class='t-fail-count weight-normal'></span> test(s) failed, <span class='t-others-count weight-normal'></span> others</span>
+							</div> 
+						</div> 
+					</div> 
+					<div class='col s12 m6 l4 fh'> 
+						<div class='card-panel'> 
+							<div>
+								<span class='panel-name'>Steps View</span>
+							</div> 
+							<div class='panel-setting modal-trigger step-status-filter right'>
+								<a href='#step-status-filter'><i class='mdi-navigation-more-vert text-md'></i></a>
+							</div> 
+							<div class='chart-box'>
+								<canvas class='text-centered' id='step-analysis'></canvas>
+							</div> 
+							<div>
+								<span class='weight-light'><span class='s-pass-count weight-normal'></span> step(s) passed </span>
+							</div> 
+							<div>
+								<span class='weight-light'><span class='s-fail-count weight-normal'></span> step(s) failed, <span class='s-others-count weight-normal'></span> others</span>
+							</div> 
+						</div> 
+					</div>
+					<div class='col s12 m12 l4 fh'> 
+						<div class='card-panel'> 
+							<span class='panel-name'>Pass Percentage</span> 
+							<span class='pass-percentage panel-lead'></span> 
+							<div class='progress light-blue lighten-3'> 
+								<div class='determinate light-blue'></div> 
+							</div> 
+						</div> 
+					</div>
+				</div>
+				<div class='system-view'>
+					<div class='col l4 m12 s12'>
+						<div class='card-panel'>
+							<span class='label info outline right'>Environment</span>
+							<table>
+								<thead>
+									<tr>
+										<th>Param</th>
+										<th>Value</th>
+									</tr>
+								</thead>
+								<tbody>
+										<tr>
+											<td>User Name</td>
+											<td>2003111</td>
+										</tr>
+										<tr>
+											<td>OS</td>
+											<td>Windows 7</td>
+										</tr>
+										<tr>
+											<td>Java Version</td>
+											<td>1.8.0_231</td>
+										</tr>
+										<tr>
+											<td>Host Name</td>
+											<td>AUTOEVER-PC164</td>
+										</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+					<div class='category-summary-view'>
+						<div class='col l4 m6 s12'>
+							<div class='card-panel'>
+								<span class='label info outline right'>Categories</span>
+								<table>
+									<thead>
+										<tr>
+											<th>Name</th>
+										</tr>
+									</thead>
+									<tbody>
+											<tr>
+												<td>
+													Smoke
+												</td>
+											</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+			</div>
+			<!-- /dashboard -->
+			
+			<!-- tests -->
+			<div id='test-view' class='row _addedTable'>
+				<div class='col _addedCell1'>
+					<div class='contents'>
+						<div class='card-panel heading'>
+							<h5>Tests</h5>
+						</div>
+						<div class='card-panel filters'>
+							<div>
+								<a class='dropdown-button btn-floating btn-small waves-effect waves-light grey tests-toggle' data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#'>
+									<i class='mdi-action-reorder'></i>
+								</a>
+								<ul id='tests-toggle' class='dropdown-content'>
+									<li class='pass'><a href='#!'>Pass</a></li>
+									<li class='fail'><a href='#!'>Fail</a></li>
+									<li class='skip'><a href='#!'>Skip</a></li>
+									<li class='divider'></li>
+									<li class='clear'><a href='#!'>Clear Filters</a></li>
+								</ul>
+							</div>
+								<div>
+									<a class='dropdown-button btn-floating btn-small waves-effect waves-light grey category-toggle' data-activates='category-toggle' data-constrainwidth='false' data-beloworigin='true' data-hover='true' href='#'>
+										<i class='mdi-maps-local-offer'></i>
+									</a>
+									<ul id='category-toggle' class='dropdown-content'>
+											<li class='Smoke'><a href='#!'>Smoke</a></li>
+										<li class='divider'></li>
+										<li class='clear'><a href='#!'>Clear Filters</a></li>
+									</ul>
+								</div>
+							<div>
+								<a class='btn-floating btn-small waves-effect waves-light grey' id='clear-filters' alt='Clear Filters' title='Clear Filters'>
+									<i class='mdi-navigation-close'></i>
+								</a>
+							</div>
+							<div>
+								<a class='btn-floating btn-small waves-effect waves-light grey' id='enableDashboard' alt='Enable Dashboard' title='Enable Dashboard'>
+									<i class='mdi-action-track-changes'></i>
+								</a>
+							</div>
+							<div>
+								<a class='btn-floating btn-small waves-effect waves-light blue enabled' id='refreshCharts' alt='Refresh Charts on Filters' title='Refresh Charts on Filters'>
+									<i class='mdi-navigation-refresh'></i>
+								</a>
+							</div>
+							<div class='search' alt='Search Tests' title='Search Tests'>
+								<div class='input-field left'>
+									<input id='searchTests' type='text' class='validate' placeholder='Search Tests...'>
+								</div>
+								<a href="#" class='btn-floating btn-small waves-effect waves-light grey'>
+									<i class='mdi-action-search'></i>
+								</a>
+							</div>
+						</div>
+						<div class='card-panel no-padding-h no-padding-v no-margin-v'>
+							<div class='wrapper'>
+								<ul id='test-collection' class='test-collection'>
+										<li class='collection-item test displayed active pass ' extentid='4fed2d39-6f22-4f88-b699-a5399c400ed7'>
+											<div class='test-head'>
+												<span class='test-name'>MyH Login -Invalid Credential </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide  smoke'></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>04-12-2019 10:05:41</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>04-12-2019 10:06:56</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 1m 15s+3ms</span>
+												</div>
+												<div class='test-desc'>Login in MyH Using Invalid UserName/Password</div>
+												<div class='test-attributes'>
+														<div class='categories'>
+																<span class='category text-white'>Smoke</span>
+														</div>
+														<div class='authors'>
+																<span class='author text-white'>Boopathi</span>
+														</div>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:06:12</td>
+																	<td class='step-details'>The browser:chrome launched successfully<a href='./../reports/images/784426540.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/784426540.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:06:40</td>
+																	<td class='step-details'>Page has refresh sucessfully<a href='./../reports/images/515502755.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/515502755.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:06:43</td>
+																	<td class='step-details'>The element with xpath: .//form[@id='login-form']//input[@id='username'] is entered.<a href='./../reports/images/468873539.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/468873539.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:06:47</td>
+																	<td class='step-details'>The element with xpath: .//form[@id='login-form']//input[@id='password'] is entered.<a href='./../reports/images/819625750.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/819625750.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:06:49</td>
+																	<td class='step-details'>The element with xpath: .//form[@id='login-form']//input[@id='btn-login-form'] is clicked.<a href='./../reports/images/648085309.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/648085309.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:06:56</td>
+																	<td class='step-details'>The text: You have entered an incorrect username or password. Please try again. contains the value :You have entered an incorrect username or password<a href='./../reports/images/210535714.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/210535714.jpg' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='3e5cad90-eb00-47b8-9d2f-e6d6e568a005'>
+											<div class='test-head'>
+												<span class='test-name'>MyH Hyundai Resources </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide  smoke'></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>04-12-2019 10:05:41</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>04-12-2019 10:08:19</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 2m 37s+938ms</span>
+												</div>
+												<div class='test-desc'>HighLevel - Hyundai resources page & article section has been validated</div>
+												<div class='test-attributes'>
+														<div class='categories'>
+																<span class='category text-white'>Smoke</span>
+														</div>
+														<div class='authors'>
+																<span class='author text-white'>Boopathi</span>
+														</div>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:06:09</td>
+																	<td class='step-details'>The browser:chrome launched successfully<a href='./../reports/images/655652208.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/655652208.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:06:22</td>
+																	<td class='step-details'>Page has refresh sucessfully<a href='./../reports/images/772875562.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/772875562.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:06:25</td>
+																	<td class='step-details'>The element with xpath: .//form[@id='login-form']//input[@id='username'] is entered.<a href='./../reports/images/82198514.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/82198514.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:06:28</td>
+																	<td class='step-details'>The element with xpath: .//form[@id='login-form']//input[@id='password'] is entered.<a href='./../reports/images/867908182.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/867908182.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:06:31</td>
+																	<td class='step-details'>The element with xpath: .//form[@id='login-form']//input[@id='btn-login-form'] is clicked.<a href='./../reports/images/555015122.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/555015122.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:07:08</td>
+																	<td class='step-details'>Page has refresh sucessfully<a href='./../reports/images/462130967.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/462130967.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:07:19</td>
+																	<td class='step-details'>The element with xpath: .//div[@id='header-nav-icon'] is clicked.<a href='./../reports/images/289092800.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/289092800.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:07:27</td>
+																	<td class='step-details'>The element with xpath: (.//a[contains(text(),"Hyundai Resources")])[2] is clicked.<a href='./../reports/images/406885419.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/406885419.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:07:37</td>
+																	<td class='step-details'>The element with xpath: (.//div[@class='selectcategory-block'])[1] is clicked.<a href='./../reports/images/195641189.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/195641189.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:07:44</td>
+																	<td class='step-details'>The element with xpath: .//a[text()=' Technology and Navigation'] is clicked.<a href='./../reports/images/880739176.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/880739176.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:07:44</td>
+																	<td class='step-details'>The element with xpath: .//a[text()='All Vehicle Results'] is clicked.<a href='./../reports/images/494451438.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/494451438.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:07:45</td>
+																	<td class='step-details'>The element with xpath: .//select[@id='gr_filter_year2'] is selected with value :2017<a href='./../reports/images/420743922.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/420743922.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:07:46</td>
+																	<td class='step-details'>The element with xpath: .//select[@id='gr_filter_model2'] is selected with value :elantra<a href='./../reports/images/465855770.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/465855770.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:07:47</td>
+																	<td class='step-details'>The element with xpath: .//select[@id='gr_filter_trim2'] is selected with value :eco<a href='./../reports/images/28983471.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/28983471.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:07:54</td>
+																	<td class='step-details'>List of element has located<a href='./../reports/images/13746659.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/13746659.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:07:55</td>
+																	<td class='step-details'>Technology and Navigation Resourcescategory articles has been displaying<a href='./../reports/images/21273828.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/21273828.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:08:01</td>
+																	<td class='step-details'>List of element has located<a href='./../reports/images/825450001.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/825450001.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:08:08</td>
+																	<td class='step-details'>The element with xpath: .//div[@class='click-list']//li//a[1] is clicked.<a href='./../reports/images/361159734.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/361159734.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:08:08</td>
+																	<td class='step-details'>Frequently Asked Questions about Hyundai Digital KeyArticles page has been displaying<a href='./../reports/images/198330444.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/198330444.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:08:09</td>
+																	<td class='step-details'>Articles page Banner has been displaying<a href='./../reports/images/245157311.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/245157311.jpg' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='71065553-efb5-4de3-801e-159052515f32'>
+											<div class='test-head'>
+												<span class='test-name'>MyH Login -Valid Credential </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide  smoke'></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>04-12-2019 10:05:41</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>04-12-2019 10:07:09</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 1m 27s+800ms</span>
+												</div>
+												<div class='test-desc'>Login in MyH Using valid UserName/Password</div>
+												<div class='test-attributes'>
+														<div class='categories'>
+																<span class='category text-white'>Smoke</span>
+														</div>
+														<div class='authors'>
+																<span class='author text-white'>Boopathi</span>
+														</div>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:06:10</td>
+																	<td class='step-details'>The browser:chrome launched successfully<a href='./../reports/images/71272328.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/71272328.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:06:35</td>
+																	<td class='step-details'>Page has refresh sucessfully<a href='./../reports/images/653587850.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/653587850.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:06:40</td>
+																	<td class='step-details'>The element with xpath: .//form[@id='login-form']//input[@id='username'] is entered.<a href='./../reports/images/103760660.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/103760660.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:06:44</td>
+																	<td class='step-details'>The element with xpath: .//form[@id='login-form']//input[@id='password'] is entered.<a href='./../reports/images/183307409.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/183307409.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:06:46</td>
+																	<td class='step-details'>The element with xpath: .//form[@id='login-form']//input[@id='btn-login-form'] is clicked.<a href='./../reports/images/405642744.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/405642744.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:07:08</td>
+																	<td class='step-details'>The title of the page matches with the value :Dashboard | MyHyundai  https://sweb-owners.hyundaiusa.com/content/myhyundai/us/en/page/dashboard.html<a href='./../reports/images/598056088.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/598056088.jpg' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='26f772ab-c277-4183-8f5e-2aca878b3a64'>
+											<div class='test-head'>
+												<span class='test-name'>Enrollment  and  Cancel Subscription </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide  smoke'></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>04-12-2019 10:06:57</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>04-12-2019 10:15:09</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 8m 12s+379ms</span>
+												</div>
+												<div class='test-desc'>Perform Enrollment in Prospect Account and cancelled subscripiton</div>
+												<div class='test-attributes'>
+														<div class='categories'>
+																<span class='category text-white'>Smoke</span>
+														</div>
+														<div class='authors'>
+																<span class='author text-white'>Boopathi</span>
+														</div>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:07:19</td>
+																	<td class='step-details'>The browser:chrome launched successfully<a href='./../reports/images/610578115.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/610578115.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:07:33</td>
+																	<td class='step-details'>Page has refresh sucessfully<a href='./../reports/images/262053539.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/262053539.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:07:37</td>
+																	<td class='step-details'>The element with xpath: .//form[@id='login-form']//input[@id='username'] is entered.<a href='./../reports/images/311910300.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/311910300.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:07:40</td>
+																	<td class='step-details'>The element with xpath: .//form[@id='login-form']//input[@id='password'] is entered.<a href='./../reports/images/241564593.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/241564593.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:07:42</td>
+																	<td class='step-details'>The element with xpath: .//form[@id='login-form']//input[@id='btn-login-form'] is clicked.<a href='./../reports/images/254062271.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/254062271.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:08:02</td>
+																	<td class='step-details'>Page has refresh sucessfully<a href='./../reports/images/269210672.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/269210672.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:08:07</td>
+																	<td class='step-details'>The element with xpath: .//input[contains(@class,'btn-add-vehicle')][@value='Add a vehicle'] is clicked.<a href='./../reports/images/825736566.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/825736566.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:08:10</td>
+																	<td class='step-details'>The element with xpath: .//input[@id='edit_vin'] is entered.<a href='./../reports/images/338009017.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/338009017.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:08:11</td>
+																	<td class='step-details'>The element with xpath: .//input[@id='vehicle-reg-form'] is clicked.<a href='./../reports/images/651995485.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/651995485.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:08:26</td>
+																	<td class='step-details'>The element with xpath: .//input[@id='vr-odometer'] is entered.<a href='./../reports/images/428316019.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/428316019.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:08:27</td>
+																	<td class='step-details'>The element with xpath: .//span[contains(text(),'Repeated short-distance')] is clicked.<a href='./../reports/images/887559431.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/887559431.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:08:30</td>
+																	<td class='step-details'>The element with xpath: .//a[@class='addressblk_btnedit edit_placement'] is clicked.<a href='./../reports/images/203456247.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/203456247.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:08:33</td>
+																	<td class='step-details'>The element with xpath: .//input[@id='new_firstname'] is entered.<a href='./../reports/images/446012191.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/446012191.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:08:35</td>
+																	<td class='step-details'>The element with xpath: .//input[@id='new_lastname'] is entered.<a href='./../reports/images/704344259.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/704344259.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:08:38</td>
+																	<td class='step-details'>The element with xpath: .//input[@id='new_street1'] is entered.<a href='./../reports/images/830847863.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/830847863.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:08:41</td>
+																	<td class='step-details'>The element with xpath: .//input[@id='new_city'] is entered.<a href='./../reports/images/379024288.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/379024288.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:08:41</td>
+																	<td class='step-details'>The element with xpath: .//select[@id='vhreg_state_list'] is selected with value :CA<a href='./../reports/images/297118454.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/297118454.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:08:44</td>
+																	<td class='step-details'>The element with xpath: .//input[@id='new_phone'] is entered.<a href='./../reports/images/657555743.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/657555743.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:08:44</td>
+																	<td class='step-details'>The element with xpath: .//select[@id='vhreg_typejs'] is selected with value :Mobile<a href='./../reports/images/666561226.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/666561226.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:08:45</td>
+																	<td class='step-details'>Page has sucessfully scrolled<a href='./../reports/images/203906501.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/203906501.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:08:45</td>
+																	<td class='step-details'>Page has sucessfully scrolled<a href='./../reports/images/40170725.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/40170725.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:08:45</td>
+																	<td class='step-details'>Page has sucessfully scrolled<a href='./../reports/images/404297877.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/404297877.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:08:46</td>
+																	<td class='step-details'>Page has sucessfully scrolled<a href='./../reports/images/676407133.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/676407133.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:08:46</td>
+																	<td class='step-details'>Page has sucessfully scrolled<a href='./../reports/images/373758614.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/373758614.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:08:57</td>
+																	<td class='step-details'>The element with xpath: (.//div[@class='row veh_enroll']//label)[1] is clicked.<a href='./../reports/images/868201020.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/868201020.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:08:57</td>
+																	<td class='step-details'>The element with xpath: .//a[@id='complete_vehicle_registration'] is clicked.<a href='./../reports/images/401639230.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/401639230.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:09:20</td>
+																	<td class='step-details'>The element with xpath: .//h2[contains(text(),'update your PIN')] is present.<a href='./../reports/images/471502216.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/471502216.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:09:25</td>
+																	<td class='step-details'>The element with xpath: .//span[contains(text(),'my current Blue Link PIN')] is clicked.<a href='./../reports/images/859095597.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/859095597.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:09:26</td>
+																	<td class='step-details'>The element with xpath: .//input[@id='btn_updatepin'] is clicked.<a href='./../reports/images/453442327.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/453442327.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:09:57</td>
+																	<td class='step-details'>The element with xpath: (.//div[@class='pric-block-wrap monthly']//label)[1] is clicked.<a href='./../reports/images/323964968.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/323964968.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:09:57</td>
+																	<td class='step-details'>Page has sucessfully scrolled<a href='./../reports/images/713161726.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/713161726.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:10:00</td>
+																	<td class='step-details'>The element with xpath: (.//div[@class='pric-block-wrap monthly']//label)[2] is clicked.<a href='./../reports/images/353236663.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/353236663.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:10:00</td>
+																	<td class='step-details'>Page has sucessfully scrolled<a href='./../reports/images/814730584.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/814730584.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:10:03</td>
+																	<td class='step-details'>The element with xpath: (.//div[@class='pric-block-wrap monthly']//label)[3] is clicked.<a href='./../reports/images/132983394.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/132983394.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:10:03</td>
+																	<td class='step-details'>The element with xpath: .//input[contains(@class,'proToPay')] is clicked.<a href='./../reports/images/273920843.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/273920843.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:10:24</td>
+																	<td class='step-details'>The element with xpath: .//label[contains(text(),'I confirm')] is clicked.<a href='./../reports/images/237997574.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/237997574.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:10:29</td>
+																	<td class='step-details'>The element with xpath: .//input[@id='btnPlaceOrder'] is clicked.<a href='./../reports/images/481225195.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/481225195.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:11:34</td>
+																	<td class='step-details'>The text: Thank you for your order contains the value :Thank<a href='./../reports/images/836617624.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/836617624.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:11:39</td>
+																	<td class='step-details'>Page has sucessfully scrolled<a href='./../reports/images/377645902.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/377645902.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:11:57</td>
+																	<td class='step-details'>The element with id: .//a[@id='proceed_to_dashboard_btn'] is clicked.<a href='./../reports/images/323786054.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/323786054.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:12:27</td>
+																	<td class='step-details'>The text: 3 active packages contains the value :active packages<a href='./../reports/images/240378381.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/240378381.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:12:45</td>
+																	<td class='step-details'>Page has refresh sucessfully<a href='./../reports/images/271026258.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/271026258.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:12:45</td>
+																	<td class='step-details'>Page has sucessfully scrolled<a href='./../reports/images/578394285.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/578394285.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:12:52</td>
+																	<td class='step-details'>The element with xpath: .//a[contains(text(),'Manage subscription')] is clicked.<a href='./../reports/images/554838191.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/554838191.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:13:13</td>
+																	<td class='step-details'>Page has sucessfully scrolled<a href='./../reports/images/286696902.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/286696902.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:13:13</td>
+																	<td class='step-details'>The element with xpath: (.//a[contains(text(),'Cancel Subscription')])[1] is clicked.<a href='./../reports/images/394391330.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/394391330.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:13:14</td>
+																	<td class='step-details'>Page has sucessfully scrolled<a href='./../reports/images/699107406.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/699107406.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:13:23</td>
+																	<td class='step-details'>The element with xpath: (.//a[contains(text(),'Cancel Subscription')])[2] is clicked.<a href='./../reports/images/670040766.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/670040766.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:14:03</td>
+																	<td class='step-details'>The text: Your Blue Link subscription will now be canceled, please allow up to 24 hours for processing. contains the value :Your Blue Link subscription will now be canceled<a href='./../reports/images/307078027.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/307078027.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:14:06</td>
+																	<td class='step-details'>The element with xpath: (.//button[@class='modal-close'])[1] is clicked.<a href='./../reports/images/651131474.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/651131474.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:14:16</td>
+																	<td class='step-details'>The text: Your subscription is now canceled. contains the value :Your subscription is now canceled<a href='./../reports/images/53272518.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/53272518.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:14:29</td>
+																	<td class='step-details'>The element with xpath: .//div[@class='btn-area']/a[@class='btn btn-submit'] is clicked.<a href='./../reports/images/375116552.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/375116552.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:15:09</td>
+																	<td class='step-details'>The text: No active packages contains the value :No active packages<a href='./../reports/images/648365021.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/648365021.jpg' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='9da14117-40dd-48d9-9a19-4d0479fb3cd2'>
+											<div class='test-head'>
+												<span class='test-name'>Enroll Later in Vehicle Registration Page </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide  smoke'></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>04-12-2019 10:15:11</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>04-12-2019 10:17:57</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 2m 46s+110ms</span>
+												</div>
+												<div class='test-desc'>MyH Enrollment Later Scenario</div>
+												<div class='test-attributes'>
+														<div class='categories'>
+																<span class='category text-white'>Smoke</span>
+														</div>
+														<div class='authors'>
+																<span class='author text-white'>Boopathi</span>
+														</div>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:15:30</td>
+																	<td class='step-details'>The browser:chrome launched successfully<a href='./../reports/images/850842447.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/850842447.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:15:48</td>
+																	<td class='step-details'>Page has refresh sucessfully<a href='./../reports/images/415364095.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/415364095.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:15:51</td>
+																	<td class='step-details'>The element with xpath: .//form[@id='login-form']//input[@id='username'] is entered.<a href='./../reports/images/12906605.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/12906605.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:15:54</td>
+																	<td class='step-details'>The element with xpath: .//form[@id='login-form']//input[@id='password'] is entered.<a href='./../reports/images/713255369.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/713255369.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:15:56</td>
+																	<td class='step-details'>The element with xpath: .//form[@id='login-form']//input[@id='btn-login-form'] is clicked.<a href='./../reports/images/307537168.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/307537168.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:16:17</td>
+																	<td class='step-details'>Page has refresh sucessfully<a href='./../reports/images/289177116.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/289177116.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:16:23</td>
+																	<td class='step-details'>The element with xpath: .//input[contains(@class,'btn-add-vehicle')][@value='Add a vehicle'] is clicked.<a href='./../reports/images/415065420.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/415065420.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:16:26</td>
+																	<td class='step-details'>The element with xpath: .//input[@id='edit_vin'] is entered.<a href='./../reports/images/121808554.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/121808554.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:16:26</td>
+																	<td class='step-details'>The element with xpath: .//input[@id='vehicle-reg-form'] is clicked.<a href='./../reports/images/801651531.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/801651531.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:16:47</td>
+																	<td class='step-details'>The element with xpath: .//input[@id='vr-odometer'] is entered.<a href='./../reports/images/547089586.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/547089586.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:16:47</td>
+																	<td class='step-details'>The element with xpath: .//span[contains(text(),'Repeated short-distance')] is clicked.<a href='./../reports/images/580692217.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/580692217.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:16:51</td>
+																	<td class='step-details'>The element with xpath: .//a[@class='addressblk_btnedit edit_placement'] is clicked.<a href='./../reports/images/157538377.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/157538377.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:16:54</td>
+																	<td class='step-details'>The element with xpath: .//input[@id='new_firstname'] is entered.<a href='./../reports/images/259802000.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/259802000.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:16:56</td>
+																	<td class='step-details'>The element with xpath: .//input[@id='new_lastname'] is entered.<a href='./../reports/images/377843170.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/377843170.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:16:59</td>
+																	<td class='step-details'>The element with xpath: .//input[@id='new_street1'] is entered.<a href='./../reports/images/255253369.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/255253369.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:17:01</td>
+																	<td class='step-details'>The element with xpath: .//input[@id='new_city'] is entered.<a href='./../reports/images/89438027.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/89438027.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:17:02</td>
+																	<td class='step-details'>The element with xpath: .//select[@id='vhreg_state_list'] is selected with value :CA<a href='./../reports/images/895425517.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/895425517.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:17:04</td>
+																	<td class='step-details'>The element with xpath: .//input[@id='new_phone'] is entered.<a href='./../reports/images/685605889.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/685605889.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:17:05</td>
+																	<td class='step-details'>The element with xpath: .//select[@id='vhreg_typejs'] is selected with value :Mobile<a href='./../reports/images/776608170.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/776608170.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:17:05</td>
+																	<td class='step-details'>Page has sucessfully scrolled<a href='./../reports/images/424274596.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/424274596.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:17:06</td>
+																	<td class='step-details'>Page has sucessfully scrolled<a href='./../reports/images/517201699.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/517201699.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:17:06</td>
+																	<td class='step-details'>Page has sucessfully scrolled<a href='./../reports/images/228882260.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/228882260.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:17:15</td>
+																	<td class='step-details'>The element with xpath: (.//div[contains(@class,'row veh_enroll')]//div[contains(@class,'radio-item')]/label)[2] is clicked.<a href='./../reports/images/414031946.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/414031946.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:17:15</td>
+																	<td class='step-details'>The element with xpath: .//a[@id='complete_vehicle_registration'] is clicked.<a href='./../reports/images/897102566.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/897102566.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:17:57</td>
+																	<td class='step-details'>The text: No active packages contains the value :No active packages<a href='./../reports/images/291551877.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/291551877.jpg' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active fail ' extentid='c65a4fa2-6bdc-4abc-aad8-9247ce9dd499'>
+											<div class='test-head'>
+												<span class='test-name'>Schedule Service </span>
+												<span class='test-status label right outline capitalize fail'>fail</span>
+												<span class='category-assigned hide  smoke'></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>04-12-2019 10:17:58</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>04-12-2019 10:22:18</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 4m 20s+592ms</span>
+												</div>
+												<div class='test-desc'>MyH Schedule Service</div>
+												<div class='test-attributes'>
+														<div class='categories'>
+																<span class='category text-white'>Smoke</span>
+														</div>
+														<div class='authors'>
+																<span class='author text-white'>Boopathi</span>
+														</div>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:18:18</td>
+																	<td class='step-details'>The browser:chrome launched successfully<a href='./../reports/images/174261338.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/174261338.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:18:29</td>
+																	<td class='step-details'>Page has refresh sucessfully<a href='./../reports/images/750837906.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/750837906.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:18:32</td>
+																	<td class='step-details'>The element with xpath: .//form[@id='login-form']//input[@id='username'] is entered.<a href='./../reports/images/552184822.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/552184822.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:18:35</td>
+																	<td class='step-details'>The element with xpath: .//form[@id='login-form']//input[@id='password'] is entered.<a href='./../reports/images/740529139.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/740529139.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:18:38</td>
+																	<td class='step-details'>The element with xpath: .//form[@id='login-form']//input[@id='btn-login-form'] is clicked.<a href='./../reports/images/267044768.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/267044768.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:19:10</td>
+																	<td class='step-details'>Page has refresh sucessfully<a href='./../reports/images/151530852.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/151530852.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:19:21</td>
+																	<td class='step-details'>The element with xpath: .//div[@id='header-nav-icon'] is clicked.<a href='./../reports/images/401372057.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/401372057.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:19:33</td>
+																	<td class='step-details'>The element with xpath: .//div[@id='opt_user']//a[text()='Vehicle Health'] is clicked.<a href='./../reports/images/567057911.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/567057911.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:19:43</td>
+																	<td class='step-details'>The element with xpath: (.//a[text()='Schedule service'])[1] is clicked.<a href='./../reports/images/488471781.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/488471781.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:20:13</td>
+																	<td class='step-details'>List of element has located<a href='./../reports/images/210383057.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/210383057.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:20:18</td>
+																	<td class='step-details'>Frame has located<a href='./../reports/images/172480773.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/172480773.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>10:22:08</td>
+																	<td class='step-details'>List of element has located<a href='./../reports/images/725751207.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/725751207.jpg' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+																	<td class='timestamp'>10:22:18</td>
+																	<td class='step-details'>no such frame exception<a href='./../reports/images/677559589.jpg' data-featherlight='image'><img class='report-img' src='./../reports/images/677559589.jpg' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id='test-details-wrapper' class='col _addedCell2'>
+					<div class='contents'>
+						<div class='card-panel details-view'>
+							<h5 class='details-name'></h5>
+							<div class='step-filters right'>
+								<span class='btn-floating btn-small waves-effect waves-light blue' status='info' alt='info' title='info'><i class='mdi-action-info-outline'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light green' status='pass' alt='pass' title='pass'><i class='mdi-action-check-circle'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light red' status='fail' alt='fail' title='fail'><i class='mdi-navigation-cancel'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light red darken-4' status='fatal' alt='fatal' title='fatal'><i class='mdi-navigation-cancel'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light red lighten-2' status='error' alt='error' title='error'><i class='mdi-alert-error'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light orange' alt='warning' status='warning' title='warning'><i class='mdi-alert-warning'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light cyan' status='skip' alt='skip' title='skip'><i class='mdi-content-redo'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light grey darken-2' status='clear-step-filter' alt='Clear filters' title='Clear filters'><i class='mdi-content-clear'></i></span>
+							</div>
+							<div class='details-container'>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /tests -->
+			
+			<!-- categories -->
+				<div id='categories-view' class='row _addedTable hide'>
+					<div class='col _addedCell1'>
+						<div class='contents'>
+							<div class='card-panel heading'>
+								<h5>Categories</h5>
+							</div>
+							<div class='card-panel filters'>
+								<div class='search' alt='Search tests' title='Search tests'>
+									<div class='input-field left'>
+										<input id='searchTests' type='text' class='validate' placeholder='Search...'>
+									</div>
+									<a href="#" class='btn-floating btn-small waves-effect waves-light blue lighten-1'>
+										<i class='mdi-action-search'></i>
+									</a>
+								</div>
+							</div>
+							<div class='card-panel no-padding-h no-padding-v'>
+								<div class='wrapper'>
+									<ul id='cat-collection' class='cat-collection'>
+											<li class='category-item displayed'>
+												<div class='cat-head'>
+													<span class='category-name'>Smoke</span>
+												</div>
+												<div class='category-status-counts'>
+														<span class='pass label dot'>Pass: 5</span>
+														<span class='fail label dot'>Fail: 1</span>
+												</div>
+												<div class='cat-body'>
+													<div class='category-status-counts'>
+														<div class='button-group'>
+															<a href='#!' class='pass label filter'>Pass <span class='icon'>5</span></a>
+															<a href='#!' class='fail label filter'>Fail <span class='icon'>1</span></a>
+															<a href='#!' class='other label filter'>Others <span class='icon'>0</span></a>
+														</div>
+													</div>
+													<div class='cat-tests'>
+														<table class='bordered'>
+															<thead>
+																<tr>
+																	<th>RunDate</th>
+																	<th>Test Name</th>
+																	<th>Status</th>
+																</tr>
+															</thead>
+															<tbody>
+																	<tr class='pass'>
+																		<td>04-12-2019 10:05:41</td>
+																		<td><span class='category-link linked' extentid='4fed2d39-6f22-4f88-b699-a5399c400ed7'>MyH Login -Invalid Credential</span></td>
+																		<td><div class='status label capitalize pass'>pass</div></td>
+																	</tr>
+																	<tr class='pass'>
+																		<td>04-12-2019 10:05:41</td>
+																		<td><span class='category-link linked' extentid='71065553-efb5-4de3-801e-159052515f32'>MyH Login -Valid Credential</span></td>
+																		<td><div class='status label capitalize pass'>pass</div></td>
+																	</tr>
+																	<tr class='pass'>
+																		<td>04-12-2019 10:05:41</td>
+																		<td><span class='category-link linked' extentid='3e5cad90-eb00-47b8-9d2f-e6d6e568a005'>MyH Hyundai Resources</span></td>
+																		<td><div class='status label capitalize pass'>pass</div></td>
+																	</tr>
+																	<tr class='pass'>
+																		<td>04-12-2019 10:06:57</td>
+																		<td><span class='category-link linked' extentid='26f772ab-c277-4183-8f5e-2aca878b3a64'>Enrollment  and  Cancel Subscription</span></td>
+																		<td><div class='status label capitalize pass'>pass</div></td>
+																	</tr>
+																	<tr class='pass'>
+																		<td>04-12-2019 10:15:11</td>
+																		<td><span class='category-link linked' extentid='9da14117-40dd-48d9-9a19-4d0479fb3cd2'>Enroll Later in Vehicle Registration Page</span></td>
+																		<td><div class='status label capitalize pass'>pass</div></td>
+																	</tr>
+																	<tr class='fail'>
+																		<td>04-12-2019 10:17:58</td>
+																		<td><span class='category-link linked' extentid='c65a4fa2-6bdc-4abc-aad8-9247ce9dd499'>Schedule Service</span></td>
+																		<td><div class='status label capitalize fail'>fail</div></td>
+																	</tr>
+															<tbody>
+														</table>
+													</div>
+												</div> 
+											</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id='cat-details-wrapper' class='col _addedCell2'>
+						<div class='contents'>
+							<div class='card-panel details-view'>
+								<h5 class='cat-name'></h5>
+								<div class='cat-container'>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			<!-- /categories -->
+			
+			<!-- exceptions -->
+			<!-- /exceptions -->
+			
+			<!-- testrunner logs -->
+			<!-- /testrunner logs -->
+			
+		</div>
+		<!-- /container -->
+		
+		<!-- test dashboard counts setting -->
+		<div id='test-count-setting' class='modal bottom-sheet'> 
+			<div class='modal-content'> 
+				<h5>Configure Tests Count Setting</h5> 
+				<input name='test-count-setting' type='radio' id='parentWithoutNodes' class='with-gap'> 
+				<label for='parentWithoutNodes'>Parent Tests Only (Does not include child nodes in counts)</label> 
+				<br> 
+				<input name='test-count-setting' type='radio' id='parentWithoutNodesAndNodes' class='with-gap'> 
+				<label for='parentWithoutNodesAndNodes'>Parent Tests Without Child Tests + Child Tests</label> 
+				<br> 
+				<input name='test-count-setting' type='radio' id='childNodes' class='with-gap'> 
+				<label for='childNodes'>Child Tests Only</label> 
+			</div> 
+			<div class='modal-footer'> 
+				<a href='#!' class='modal-action modal-close waves-effect waves-green btn'>Save</a> 
+			</div> 
+		</div>
+		<!-- /test dashboard counts setting -->
+		
+		<!-- filter for step status -->
+		<div id='step-status-filter' class='modal bottom-sheet'> 
+			<div class='modal-content'> 
+				<h5>Select status</h5> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-pass'> 
+				<label for='step-dashboard-filter-pass'>Pass</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-fail'> 
+				<label for='step-dashboard-filter-fail'>Fail</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-fatal'> 
+				<label for='step-dashboard-filter-fatal'>Fatal</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-error'> 
+				<label for='step-dashboard-filter-error'>Error</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-warning'> 
+				<label for='step-dashboard-filter-warning'>Warning</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-skip'> 
+				<label for='step-dashboard-filter-skip'>Skipped</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-info'> 
+				<label for='step-dashboard-filter-info'>Info</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-unknown'> 
+				<label for='step-dashboard-filter-unknown'>Unknown</label> 
+			</div>
+			<div class='modal-footer'> 
+				<a href='#!' class='modal-action modal-close waves-effect waves-green btn'>Save</a> 
+			</div> 
+		</div>
+		<!-- /filter for step status -->
+		
+		<script src='https://cdn.rawgit.com/anshooarora/extentreports/6032d73243ba4fe4fb8769eb9c315d4fdf16fe68/cdn/extent.js' type='text/javascript'></script>
+
+		<script>$(document).ready(function() { $('.logo span').html('ExtentReports'); });</script>
+		<script>
+				
+      
+        $(document).ready(function() {
+          
+        });
+      
+    
+		</script>
+	</body>
+</html>

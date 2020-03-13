@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite" >
+  <test  thread-count="1" name="Test" parallel="classes">
+                <parameter name="BrowserName" value="chrome" />
+    <classes>
+       <class name="testcases.Tc001_Login_Positive_Cases"/>
+      <class name="testcases.Tc002_NegativeLogincase"/>
+   <class name="testcases.Tc003_Hyundai_Resources"/>
+      <class name="testcases.Tc004_Enrollment"/>
+      </classes>
+  </test> <!-- Test -->
+  <test  name="TestEnrollLater">
+    <parameter name="BrowserName" value="chrome" />
+    <classes>
+     <class name="testcases.Tc005_EnrollmentLater"/>
+    </classes>
+  </test> <!-- Test -->
+ <test  name="TestScheduleservicedealer">
+    <parameter name="BrowserName" value="chrome" />
+    <classes>
+    <class name="testcases.Tc007_ScheduleService"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
